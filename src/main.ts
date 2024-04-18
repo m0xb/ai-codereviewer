@@ -8,8 +8,12 @@ import minimatch from "minimatch";
 const GITHUB_TOKEN: string = core.getInput("GITHUB_TOKEN");
 const OPENAI_API_KEY: string = core.getInput("OPENAI_API_KEY");
 const OPENAI_API_MODEL: string = core.getInput("OPENAI_API_MODEL");
+const OCTOKIT_GITHUB_API_BASE_URL: string = core.getInput("OCTOKIT_GITHUB_API_BASE_URL");
 
-const octokit = new Octokit({ auth: GITHUB_TOKEN });
+const octokit = new Octokit({
+  auth: GITHUB_TOKEN,
+  baseUrl: OCTOKIT_GITHUB_API_BASE_URL,
+});
 
 const openai = new OpenAI({
   apiKey: OPENAI_API_KEY,
